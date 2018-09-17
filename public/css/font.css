@@ -1,0 +1,20 @@
+/* 
+AJOUTER UNE POLICE
+
+@font-face {
+    font-family: 'forte';
+    src: url('../font/nomdelafont');
+}
+
+Pour indiqué plusieurs formats (Au cas où un format ne marche pas): 
+src: url('MaSuperPolice.eot') format('eot'),
+    url('MaSuperPolice.woff') format('woff'),
+    url('MaSuperPolice.ttf') format('truetype'),
+    url('MaSuperPolice.svg') format('svg');
+
+*/
+
+@font-face {
+    font-family: 'forte';
+    src: url('../font/forte.ttf');
+}

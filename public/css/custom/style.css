@@ -1,0 +1,15 @@
+/* CUSTOM CSS */
+
+nav {
+    border-bottom-style: solid;
+    border-width: medium;
+}
+
+.dropdown i {
+    width: 30px;
+}
+
+.navbar-brand {
+    font-family: forte;
+    font-size: 25px;
+}
