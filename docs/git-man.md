@@ -1,4 +1,4 @@
-# Commandes Git
+# Manuel Git
 
 ## Installation
 
