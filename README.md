@@ -19,3 +19,4 @@ TODO:
 * [Installation du projet](docs/installation.md)
 * [Using](#)
   * TODO:
+* [Manuel Git](docs/git-man.md)
