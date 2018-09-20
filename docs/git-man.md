@@ -2,7 +2,7 @@
 
 ## Installation
 
-**Sous Windows** : installer git bash (déjà installer sur le pc de l'école). Lien d'installation : [here](https://gitforwindows.org/).
+**Sous Windows** : installer git bash (déjà installé sur le pc de l'école). Lien d'installation : [here](https://gitforwindows.org/).
 
 **Sous Ubuntu** : git est déjà disponible sur votre terminal.
 
