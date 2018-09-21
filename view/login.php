@@ -1,7 +1,6 @@
  <?php
 include(Path::view(array('includes','head.php')));
 include(Path::view(array('includes','plugin.php')));
-echo $data['test'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,7 +13,7 @@ echo $data['test'];
     <body data-spy="scroll" data-target=".navbar" data-offset="50">
 	
         <div id="top"></div>
-        <form action="login/verify" method="post">
+        <form action="<?= $data['url'] ?>" method="post">
 			<div class="container">
 				<label for="uname"><b>Mail</b></label>
 				<input type="text" placeholder="Enter Username" name="mail" required>

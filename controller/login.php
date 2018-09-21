@@ -4,7 +4,7 @@ class login extends Controller
 {
     public function index($role = '')
     {
-        $this->view('login',array('test' => 'index'));
+        $this->view('login',array('url' => 'login/verify'));
     }
 	public function verify()
 	{
@@ -17,11 +17,11 @@ class login extends Controller
 				$this->view('home');
 			}
 			else{
-				$this->view('login',array('test' => 'identifiants pas bon'));
+				$this->view('login',array('url' => ''));
 			}
 		}
 		else{
-			$this->view('login',array('test' => 'post not defined'));
+			$this->view('login',array('url' => ''));
 		}
 	}
 }
