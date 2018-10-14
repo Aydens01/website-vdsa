@@ -66,7 +66,7 @@
 	% 0.5 pour logo.jpg
 	\includegraphics[width=0.5\textwidth]{logos/logo.jpg}\par\vspace{1cm} %Insertion du logo
 	
-	{\scshape\LARGE EISTI \par} %Nom de l'université
+	{\scshape\LARGE \par} %Nom de l'université
 	\vspace{1.5cm}%Espace de 1,5cm
 	%=================================================================
 	{\scshape\Large \UE \\ \sujet \\ Projet GM1 - Dossier\par} %sous-titre
