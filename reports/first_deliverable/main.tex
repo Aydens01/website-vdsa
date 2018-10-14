@@ -1,0 +1,58 @@
+\documentclass[12pt]{rapportECL}
+\usepackage{lipsum}
+\usepackage{fancybox}
+\usepackage{float}
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{stmaryrd}
+\title{rapport\_tp1} %Titre du fichier
+\renewcommand{\thesection}{\arabic{section}} 
+\newcommand{\fact}[1]{#1\mathpunct{}!}
+
+\begin{document}
+
+%----------- Informations du rapport ---------
+
+\titre{Reformulation des besoins} %Titre du fichier .pdf
+%\UE{UE PRO} %Nom de la UE
+%\sujet{\LaTeX Approfondi} %Nom du sujet
+
+\enseignant{
+	Prénom \textsc{NOM}
+} %Nom de l'enseignant
+
+\eleves{
+	\textsc{BURIE} Aurélien \\
+	\textsc{LAFAGE} Adrien \\
+	\textsc{LEROUX} Louis-Clément \\
+	\textsc{PARAU} Emmanuel \\
+	\textsc{SAMBA} William 
+} %Nom des élèves
+
+%----------- Initialisation -------------------
+        
+\fairemarges %Afficher les marges
+\fairepagedegarde %Créer la page de garde
+\setcounter{page}{1}
+
+%------------ Corps du rapport ----------------
+
+\input{intro.tex}
+\tabledematieres %Créer la table de matières
+\input{objectifs.tex}
+\clearpage
+\input{objets.tex}
+%\clearpage
+%\input{operations.tex}
+\clearpage
+\input{ordre.tex}
+\clearpage
+\input{operateurs.tex}
+\clearpage
+\input{outils.tex}
+
+%------------ Fin du document  -----------------
+\end{document}
+
+%https://openclassrooms.com/forum/sujet/formulaire-de-formules-latex-84687
