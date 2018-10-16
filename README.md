@@ -1,6 +1,6 @@
 # Website VDSA
 
-**Auteurs** : BURIE Aurélien, LAFAGE Adrien, LEROUX Louis-Clément, PARAU Emmanuel, SAMBA William
+**Auteurs** : BURIE Aurélien, LAFAGE Adrien, LEROUX Louis-Clément, PARAU Emmanuel
 
 **Date de création** : 17/09/18
 
