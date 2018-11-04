@@ -1,0 +1,52 @@
+\documentclass[12pt]{rapportECL}
+\usepackage{lipsum}
+\usepackage{fancybox}
+\usepackage{float}
+\usepackage{amsbsy}
+\usepackage{amssymb}
+\usepackage{listings}
+\lstset{breaklines=true}
+\usepackage{stmaryrd}
+\usepackage{pdfpages}
+\title{rapport\_tp1} %Titre du fichier
+\renewcommand{\thesection}{\arabic{section}} 
+\newcommand{\fact}[1]{#1\mathpunct{}!}
+
+\begin{document}
+
+%----------- Informations du rapport ---------
+
+\titre{Modélisation des données} %Titre du fichier .pdf
+%\UE{UE PRO} %Nom de la UE
+%\sujet{\LaTeX Approfondi} %Nom du sujet
+
+\enseignant{
+	Renaud \textsc{Vérin}
+} %Nom de l'enseignant
+
+\eleves{
+	\textsc{BURIE} Aurélien \\
+	\textsc{LAFAGE} Adrien \\
+	\textsc{LEROUX} Louis-Clément \\
+	\textsc{PARAU} Emmanuel
+} %Nom des élèves
+
+%----------- Initialisation -------------------
+        
+\fairemarges %Affiche les marges
+\fairepagedegarde %Crée la page de garde
+\setcounter{page}{1}
+
+%------------ Corps du rapport ----------------
+
+\input{intro.tex}
+\tabledematieres %Crée la table des matières
+\input{mcd.tex}
+\input{mld.tex}
+\clearpage
+\input{sql.tex}
+
+%------------ Fin du document  -----------------
+\end{document}
+
+%https://openclassrooms.com/forum/sujet/formulaire-de-formules-latex-84687

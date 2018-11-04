@@ -1,0 +1,21 @@
+\section{Modèle logique}
+
+En utilisant le modèle conceptuel de nos données nous en déduisons le modèle logique suivant :
+\begin{enumerate}
+\item[•] Utilisateur(\underline{id}, nom, prenom, mail, password, role*)
+\item[•] Client(\underline{code}, adresse, code postal, ville, \#id\_utilisateur)
+\item[•] Commande(\underline{id}, date, lieu, margeTotal, chiffre d’affaires, \#id\_utilisateur)
+\item[•] Composition(\underline{\#id\_commande, \#id\_article}, marge)
+\item[•] Article(\underline{id}, dateAchat, \#codeFam\_famille)
+\item[•] Famille(\underline{codeFam}, libFam)
+\item[•] SousFamille(\underline{codeSfam}, libSfam, \#codeFam\_famille) \\
+\end{enumerate}
+
+\noindent
+\textit{* : Nous nous réservons la possibilité de supprimer ce paramètre d'Utilisateur et de créer à la place l'entité : Role(\underline{id}, nomRole, \#id\_utilisateur)} \\ \\
+
+Notons par ailleurs que nous pourrions effectuer les modifications suivantes :
+\begin{enumerate}
+\item[•] Modifier la cardinalité de la relation entre un article et une famille telle que article(1,1)-->famille.
+\item[•] Décomposer l'adresse du client. En effet dans un souci de normalisation nous pourrions la diviser en un numéro et un nom de rue.
+\end{enumerate}
