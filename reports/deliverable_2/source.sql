@@ -5,23 +5,13 @@ CREATE TABLE utilisateur(
    prenom VARCHAR(30),
    email VARCHAR(50),
    password VARCHAR(30),
-   role VARCHAR(30),
-   CONSTRAINT password CHECK (LENGTH(password) BETWEEN 8 AND 99),
+   rôle VARCHAR(30),
+   CONSTRAINT password CHECK (password BETWEEN 8 AND 99),
 );
-
-DROP TABLE IF EXISTS role;
-CREATE TABLE role(
-   id INT PRIMARY KEY,
-   nomRole VARCHAR(30),
-   idUtilisateur INT,
-   FOREIGN KEY fk_utilisateur(idUtilisateur) REFERENCES utilisateur(id)
-);
-
 
 DROP TABLE IF EXISTS client;
 CREATE TABLE client(
    code INT PRIMARY KEY,
-   adresse VARCHAR(50),
    codePostal INT,
    ville VARCHAR(30),
    idUtilisateur INT,
@@ -32,7 +22,8 @@ DROP TABLE IF EXISTS commande;
 CREATE TABLE commande(
    id INT PRIMARY KEY,
    date VARCHAR(15),
-   lieu VARCHAR(30),
+   codePostal INT,
+   ville VARCHAR(30),
    margeTotal INT,
    chiffreAffaire INT,
    idUtilisateur INT,
@@ -69,3 +60,4 @@ CREATE TABLE composition(
    FOREIGN KEY fk_commande(idCommande) REFERENCES commande(id),
    FOREIGN KEY fk_articler(idArticle) REFERENCES article(id)
 );
+
