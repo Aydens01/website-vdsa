@@ -15,13 +15,17 @@ include(Path::view(array('includes','plugin.php')));
         <div id="top"></div>
         <form action="<?= $data['url'] ?>" method="post">
 			<div class="container">
-				<label for="uname"><b>Mail</b></label>
-				<input type="text" placeholder="Enter Username" name="mail" required>
+				<div class="form-group">
+					<label for="uname"><b>Mail</b></label>
+					<input class="form-control" type="text" placeholder="Enter Username" name="mail" required>
+				</div>
 				
-				<label for="psw"><b>Password</b></label>
-				<input type="password" placeholder="Enter Password" name="psw" required>
+				<div class="form-group">
+					<label for="psw"><b>Password</b></label>
+					<input class="form-control" type="password" placeholder="Enter Password" name="psw" required>
+				</div>
 
-				<button type="submit">Login</button>
+				<button class="btn btn-primary" type="submit">Login</button>
 				<label>
 				<input type="checkbox" checked="checked" name="remember"> Remember me
 				</label>
