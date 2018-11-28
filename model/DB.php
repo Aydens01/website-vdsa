@@ -5,7 +5,7 @@ class DB {
 		
 		$conn = $this->DBconnect();
 		$sth = $conn->query('SELECT * FROM users');
-			while ($row = $sth->fetch()){
+		while ($row = $sth->fetch()){
 			echo $row['name'] . "</br>";
 		}
 		$sth = null;

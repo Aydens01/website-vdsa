@@ -11,3 +11,5 @@ require_once(ROOTPATH . DIRECTORY_SEPARATOR. 'model' . DIRECTORY_SEPARATOR . 'DB
 include 'config.php';
 require_once 'core/App.php';
 require_once 'core/Controller.php';
+require_once 'library/Data.php';
+require_once 'library/AnalyseUni.php';
