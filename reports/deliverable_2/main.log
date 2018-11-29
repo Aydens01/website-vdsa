@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2018.10.16)  4 NOV 2018 21:17
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2018.10.16)  4 NOV 2018 23:49
  restricted system commands enabled.
 **main.tex
 (./main.tex
@@ -34,7 +34,7 @@ Inserting `luaotfload.aux.set_capheight' at position 3 in `luaotfload.patch_font
 '.
 Inserting `luaotfload.rewrite_fontname' at position 4 in `luaotfload.patch_font'
 .
-luaotfload | main : initialization completed in 0.122 seconds
+luaotfload | main : initialization completed in 0.109 seconds
 Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
 (./rapportECL.cls (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
@@ -1601,62 +1601,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--16
 
  []
 
-<mcd.pdf, id=48, 597.47943pt x 845.01837pt>
-File: mcd.pdf Graphic file (type pdf)
-<use mcd.pdf>
-Package luatex.def Info: mcd.pdf  used on input line 17.
-(luatex.def)             Requested size: 597.47797pt x 845.01631pt.
-File: mcd.pdf Graphic file (type pdf)
-<use mcd.pdf>
-Package luatex.def Info: mcd.pdf  used on input line 17.
-(luatex.def)             Requested size: 597.47797pt x 845.01631pt.
-<mcd.pdf, id=51, page=1, 597.47943pt x 845.01837pt>
-File: mcd.pdf Graphic file (type pdf)
-<use mcd.pdf, page 1>
-Package luatex.def Info: mcd.pdf , page1 used on input line 17.
-(luatex.def)             Requested size: 597.47797pt x 845.01631pt.
-File: mcd.pdf Graphic file (type pdf)
-<use mcd.pdf, page 1>
-Package luatex.def Info: mcd.pdf , page1 used on input line 17.
-(luatex.def)             Requested size: 597.50531pt x 845.055pt.
+<img/mcd.png, id=48, 844.15375pt x 467.7475pt>
+File: img/mcd.png Graphic file (type png)
+<use img/mcd.png>
+Package luatex.def Info: img/mcd.png  used on input line 20.
+(luatex.def)             Requested size: 422.07584pt x 233.87317pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+)
 File: logos/logo_EISTI.png Graphic file (type png)
 <use logos/logo_EISTI.png>
-Package luatex.def Info: logos/logo_EISTI.png  used on input line 17.
+Package luatex.def Info: logos/logo_EISTI.png  used on input line 45.
 (luatex.def)             Requested size: 58.71922pt x 17.56557pt.
-[3<./img/data.png>]
-File: mcd.pdf Graphic file (type pdf)
-<use mcd.pdf, page 1>
-Package luatex.def Info: mcd.pdf , page1 used on input line 17.
-(luatex.def)             Requested size: 597.50531pt x 845.055pt.
-File: mcd.pdf Graphic file (type pdf)
-<use mcd.pdf, page 1>
-Package luatex.def Info: mcd.pdf , page1 used on input line 17.
-(luatex.def)             Requested size: 597.50531pt x 845.055pt.
-File: mcd.pdf Graphic file (type pdf)
-<use mcd.pdf, page 1>
-Package luatex.def Info: mcd.pdf , page1 used on input line 17.
-(luatex.def)             Requested size: 597.50531pt x 845.055pt.
- [4<./mcd.pdf>]) (./mld.tex
+ [3<./img/data.png>]
+File: logos/logo_EISTI.png Graphic file (type png)
+<use logos/logo_EISTI.png>
+Package luatex.def Info: logos/logo_EISTI.png  used on input line 45.
+(luatex.def)             Requested size: 58.71922pt x 17.56557pt.
+ [4<./img/mcd.png>] (./mld.tex
 Underfull \hbox (badness 10000) in paragraph at lines 11--12
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--16
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 14--16
 
  []
 
 )
 File: logos/logo_EISTI.png Graphic file (type png)
 <use logos/logo_EISTI.png>
-Package luatex.def Info: logos/logo_EISTI.png  used on input line 46.
+Package luatex.def Info: logos/logo_EISTI.png  used on input line 47.
 (luatex.def)             Requested size: 58.71922pt x 17.56557pt.
- [5] (./sql.tex (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+ [5
+
+] (./sql.tex (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 Underfull \hbox (badness 10000) in paragraph at lines 5--6
@@ -1683,7 +1658,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--12
 (./source.sql
 File: logos/logo_EISTI.png Graphic file (type png)
 <use logos/logo_EISTI.png>
-Package luatex.def Info: logos/logo_EISTI.png  used on input line 45.
+Package luatex.def Info: logos/logo_EISTI.png  used on input line 37.
 (luatex.def)             Requested size: 58.71922pt x 17.56557pt.
  [6
 
@@ -1702,52 +1677,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
 
-(./source.sql)
-Underfull \hbox (badness 10000) in paragraph at lines 21--23
-
- []
-
-(./source.sql
+(./source.sql))
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 51.
 File: logos/logo_EISTI.png Graphic file (type png)
 <use logos/logo_EISTI.png>
-Package luatex.def Info: logos/logo_EISTI.png  used on input line 18.
+Package luatex.def Info: logos/logo_EISTI.png  used on input line 51.
 (luatex.def)             Requested size: 58.71922pt x 17.56557pt.
- [7]))
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 50.
-File: logos/logo_EISTI.png Graphic file (type png)
-<use logos/logo_EISTI.png>
-Package luatex.def Info: logos/logo_EISTI.png  used on input line 50.
-(luatex.def)             Requested size: 58.71922pt x 17.56557pt.
- [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 50.
+ [7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 51.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 50.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 50.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 51.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 51.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 8435766567B3EECBE8CBCC5F7D7AD7B8;208.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 50.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 51.
 )
 
 Here is how much of LuaTeX's memory you used:
- 27366 strings out of 494480
- 156263,953878 words of node,token memory allocated
- 32589 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 57 glue, 1 kern, 1 penalty, 4262 glyph, 2569 attrib
-ute, 90 glue_spec, 429 attribute_list, 1 write nodes
-   avail lists: 1:1,2:7809,3:156,4:27,5:2487,6:890,7:2794,8:1412,9:3682,10:19,11
-:256
- 30443 multiletter control sequences out of 65536+600000
+ 27317 strings out of 494480
+ 125007,953878 words of node,token memory allocated
+ 27953 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 47 glue, 1 kern, 1 penalty, 3606 glyph, 2299 attrib
+ute, 90 glue_spec, 384 attribute_list, 1 write nodes
+   avail lists: 1:1,2:6417,3:158,4:27,5:2311,6:669,7:2747,8:1302,9:3403,10:17,11
+:231
+ 30437 multiletter control sequences out of 65536+600000
  68 fonts using 9599295 bytes
- 53i,18n,45p,492b,1360s stack positions out of 5000i,500n,10000p,200000b,100000s
-</usr/share/texmf/fonts/opentype/public/lm/lmroman12-italic.otf></usr/share/texm
-f/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/texmf/fonts/opentyp
-e/public/lm/lmroman10-bolditalic.otf></usr/share/texmf/fonts/opentype/public/lm/
-lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lmromancaps10-regu
-lar.otf>
-Output written on main.pdf (9 pages, 196549 bytes).
+ 53i,17n,45p,492b,1360s stack positions out of 5000i,500n,10000p,200000b,100000s
+</usr/share/texmf/fonts/opentype/public/lm/lmroman12-regular.otf></usr/share/tex
+mf/fonts/opentype/public/lm/lmroman10-bolditalic.otf></usr/share/texmf/fonts/ope
+ntype/public/lm/lmroman12-bold.otf></usr/share/texmf/fonts/opentype/public/lm/lm
+romancaps10-regular.otf>
+Output written on main.pdf (8 pages, 186665 bytes).
 
-PDF statistics: 197 PDF objects out of 1000 (max. 8388607)
- 156 compressed objects within 2 object streams
- 86 named destinations out of 1000 (max. 131072)
+PDF statistics: 168 PDF objects out of 1000 (max. 8388607)
+ 136 compressed objects within 2 object streams
+ 78 named destinations out of 1000 (max. 131072)
  33 words of extra memory for PDF output out of 10000 (max. 100000000)
 
