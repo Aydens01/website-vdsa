@@ -60,3 +60,4 @@ CREATE TABLE composition(
    FOREIGN KEY fk_commande(idCommande) REFERENCES commande(id),
    FOREIGN KEY fk_articler(idArticle) REFERENCES article(id)
 );
+
