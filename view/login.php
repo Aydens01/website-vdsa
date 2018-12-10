@@ -20,11 +20,11 @@ include(Path::view(array('includes','plugin.php')));
 					<input class="form-control" type="text" placeholder="Enter Username" name="mail" required>
 				</div>
 				
+
 				<div class="form-group">
 					<label for="psw"><b>Password</b></label>
-					<input class="form-control" type="password" placeholder="Enter Password" name="psw" required>
+					<input class="form-control" type="password" placeholder="Enter Password" name="password" required>
 				</div>
-
 				<button class="btn btn-primary" type="submit">Login</button>
 				<label>
 				<input type="checkbox" checked="checked" name="remember"> Remember me

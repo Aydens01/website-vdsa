@@ -2,18 +2,20 @@
 
 class loginModel extends DB
 {
-	function verif($mail,$password){
+	function verif($email,$password){
+		// $token = '' ; 
 		$conn = $this->DBconnect();
-		$request = 'SELECT * FROM users WHERE email ="'.$mail.'"';
+		$request = 'SELECT * FROM users WHERE email ="'.$email.'"';
 		$sth = $conn->query($request);
 		if ($sth != false){
-			$user = $sth->fetch();
+			$user_info = $sth->fetch();
 			  
 			$conn = null;
 			$sth = null;
-			  
-			$hash = $user['password'];
+			
+			$hash = $user_info['password'];
 			if (password_verify($password, $hash)) {
+				$user = New User($user_info['id'],$user_info['email'],$user_info['password'],$user_info['role']);
 				return true;
 			} 
 			else {

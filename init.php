@@ -7,6 +7,7 @@ define('CURRENT', '.');
 
 require_once(ROOTPATH . DIRECTORY_SEPARATOR. 'model' . DIRECTORY_SEPARATOR . 'Path.php');
 require_once(ROOTPATH . DIRECTORY_SEPARATOR. 'model' . DIRECTORY_SEPARATOR . 'DB.php');
+require_once(ROOTPATH . DIRECTORY_SEPARATOR. 'model' . DIRECTORY_SEPARATOR . 'User.php');
 
 include 'config.php';
 require_once 'core/App.php';

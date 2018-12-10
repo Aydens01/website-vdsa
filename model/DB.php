@@ -15,8 +15,10 @@ class DB {
 	    try{
             $db = new PDO('mysql:host=mysql-parauemman.alwaysdata.net;dbname=parauemman_vdsa;charset=utf8', '166296_root', 'Nellatrax162');
 		}catch (PDOException $e) {
-            $errorMessage = $e->getMessage();
-            require(Path::view(array('errorView.php')));
+			die();
+			// TODO fonctions pour l'affichage d'erreur
+            //$errorMessage = $e->getMessage();
+            //require(Path::view(array('home.php')));
         }
         return $db;
     }
