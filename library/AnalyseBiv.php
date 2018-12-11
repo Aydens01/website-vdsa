@@ -4,14 +4,14 @@
  * ANALYSE BIVARIÉE
  * 
  * @author Adrien Lafage
- * @date 27/11/18
- * @description 
- * Classe permettant d'effectuer une analyse bivariée sur un jeu
- * de données.
+ * @since 27.11.18
+ * @description
+ * Classe permettant d'effectuer une analyse bivariée quandtitative x quantitative
+ * sur un jeu de données.
  * 
- * @TODO nothing to do
+ * @TODO
  * 
- * @FIXME nothing to fix
+ * @FIXME
  */
 class AnalyseBiv extends Data
 {

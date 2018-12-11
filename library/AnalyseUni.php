@@ -5,7 +5,8 @@
  * @author Adrien Lafage
  * @date 27/11/18
  * @description
- * classe permettant de faire une analyse univariée sur un set de données.
+ * classe permettant de faire une analyse univariée quantitative 
+ * sur un set de données.
  * 
  * @TODO: fonctions mathématiques
  *        error manager
