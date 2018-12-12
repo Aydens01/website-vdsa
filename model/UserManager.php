@@ -1,7 +1,7 @@
 <?php
 
-class UserManager extends DB
-{
+class UserManager extends DB {
+	
 	function updateUser($user){
 		$conn = $this->DBconnect();
 		$request = 'SELECT * FROM users WHERE id ="'.$user->id.'"';
@@ -15,13 +15,8 @@ class UserManager extends DB
 			// insérer code pour màj l'utilisateur ici
 			
 			return true;
-			} 
-			else {
+		}else{
 				return false;
-			}
-		}
-		else{
-			return false;
 		}
 	}
 	
