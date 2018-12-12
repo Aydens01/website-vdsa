@@ -31,5 +31,20 @@ class test extends Controller
         $this->view('test/analyse', array(
             'uni'    => $uni,
         ));
+    }    
+    public function board()
+    {
+        $this->view('board',array());
+    }
+
+    public function modelTest()
+    {		
+		$this->model('boardModel')->verif();
+        //$this->view('boardModel/verif',array());
+    }
+
+    public function index()
+    {
+        $this->view('board',array());
     }
 }

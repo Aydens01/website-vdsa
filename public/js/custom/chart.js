@@ -1,5 +1,43 @@
-window.onload = function () {
-    var title = null /*TODO: récupérer le titre du graphique*/
+$(document).ready(function(){
+
+    $("#CA").prop("checked", true);
+
+    $(".target").change(function(){
+        console.log('ok');
+        var data = {};
+        data.freq = $("#frequence").val();
+        data.margeCA = $('input[name=options]:checked').val();
+        data.famille = $("#famille").val();
+        data.sousFamille = $("#sousFamille").val();
+        
+        $.ajax({
+            url:'/test/modelTest',
+            type:"POST",
+            data: data,
+            dataType:"json",
+            success:
+            function(data, status){
+                
+                var data = $.parseJSON(JSON.stringify(data));
+                console.log(data);
+                data = data[0];
+                var items = [];
+                $.each( data, function( key, val ) {
+                  items.push( "<li id='" + key + "'>" + val + "</li>" );
+                });
+               
+                $( "<ul/>", {
+                  "class": "my-new-list",
+                  html: items.join( "" )
+                }).appendTo( "#ici" );
+                
+            }
+        })
+    });
+});
+ 
+ /* window.onload = function () {
+    var title = null TODO: récupérer le titre du graphique
     var chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
         theme: "light2",
@@ -88,3 +126,5 @@ window.onload = function () {
         chart.render();
     }
 }
+
+*/
