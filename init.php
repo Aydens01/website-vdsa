@@ -1,9 +1,18 @@
 <?php
+/**
+ * init.php -- initialisation file
+ *
+ *
+ *
+ * @copyright 2018- Zero Framework (c)
+ * @license http://opensource.org/licenses/gpl-license.php GNU Public License GPL3
+ * @version $Id: init.php 2018-08-19 $
+ * 
+ */
+ 
 define('ROOTPATH', __DIR__);
-
 define('CURRENT', '.');
 
-// =============================================================================
 
 require_once(ROOTPATH . DIRECTORY_SEPARATOR. 'model' . DIRECTORY_SEPARATOR . 'Path.php');
 require_once(ROOTPATH . DIRECTORY_SEPARATOR. 'model' . DIRECTORY_SEPARATOR . 'DB.php');

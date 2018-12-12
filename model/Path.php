@@ -1,5 +1,15 @@
 <?php
-
+/**
+ * Path.php -- Path class
+ * 
+ * @author Dorian Chau
+ * @date 19.06.18
+ * @description
+ *  Legacy functions, used in the old versions of the Zero Framework (c) NOTE still used
+ * @TODO Move Path.php to /core/
+ * 
+ * @FIXME
+ */
 class Path {
 
     public static function make_path($array) {
