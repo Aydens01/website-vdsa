@@ -18,18 +18,45 @@ class test extends Controller
 
     public function analyse()
     {
+        $data = array(
+            array(16, 2, 4), 
+            array(12, 4, 8), 
+            array(5, 8, 16),
+            array(13, 9, 15),
+        );
+
         $uni = new AnalyseUni(
+            $data,
+            2
+        );
+
+        $biv = new AnaQuanQuan(
+            $data,
+            0,
+            2
+        );
+
+        $quanqual = new AnaQualQuan(
             array(
-                array(16, 2, 3), 
-                array(12, 4, 5), 
-                array(5, 6, 7),
-                array(13, 4, 11),
+                array('homme',280),
+                array('femme',163),
+                array('homme',275),
+                array('femme',168),
+                array('homme',290),
+                array('femme',180),
+                array('homme',278),
+                array('femme',170),
+                array('homme',284),
+                array('femme',172),
             ),
-            0
+            0,
+            1
         );
 
         $this->view('test/analyse', array(
             'uni'    => $uni,
+            'biv'    => $biv,
+            'qua'    => $quanqual
         ));
     }    
     public function board()

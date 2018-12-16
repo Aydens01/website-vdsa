@@ -23,3 +23,5 @@ require_once 'core/App.php';
 require_once 'core/Controller.php';
 require_once 'library/Data.php';
 require_once 'library/AnalyseUni.php';
+require_once 'library/AnaQuanQuan.php';
+require_once 'library/AnaQualQuan.php';

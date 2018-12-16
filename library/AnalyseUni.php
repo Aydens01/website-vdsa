@@ -12,6 +12,10 @@
  *        error manager
  * @FIXME: quartiles()
  */
+
+# Functions required
+#require('stats.php');
+
 class AnalyseUni extends Data
 {
     /**
@@ -40,6 +44,16 @@ class AnalyseUni extends Data
     protected $_quartile3;
 
     /**
+     * @param float $_variance La variance de la variable
+     */
+    protected $_variance;
+
+    /**
+     * @param float $_deviation L'écart-type de la variable
+     */
+    protected $_deviation;
+
+    /**
      * Effectue l'analyse univariée
      * 
      * @param array $data Le dataset (liste de listes).
@@ -48,12 +62,15 @@ class AnalyseUni extends Data
     public function __construct($data, $index)
     {
         parent::__construct($data);
+        $data_x = minToOne($this->getData(), $index);    
         $this->_index     = $index;
-        $this->_average   = $this->average($index);
+        $this->_average   = average($data_x);
         $this->_median    = $this->median($index);
         $quarts           = $this->quartiles($index);
         $this->_quartile1 = $quarts['quart1'];
         $this->_quartile3 = $quarts['quart3'];
+        $this->_variance  = variance($data_x);
+        $this->_deviation = deviation($data_x);
     }
 
     /**
@@ -107,6 +124,26 @@ class AnalyseUni extends Data
     }
 
     /**
+     * Retourne la variance de l'objet AnalyseUni
+     * 
+     * @return float La variance de la variable étudiée
+     */
+    public function getVariance()
+    {
+        return $this->_variance;
+    }
+
+    /**
+     * Retourne l'écart-type de l'objet AnalyseUni
+     * 
+     * @return float L'écart-type de la variable étudiée
+     */
+    public function getDeviation()
+    {
+        return $this->_deviation;
+    }
+
+    /**
      * Trouve la médiane d'une liste de nombres
      * 
      * @param integer $index L'index de la variable à traiter dans la sous-liste.
@@ -114,7 +151,7 @@ class AnalyseUni extends Data
      */
     public function median(int $index)
     {
-        $data  = $this->minimize($index);
+        $data  = minToOne($this->getData(), $index);
         $length  = count($data);
         $success = sort($data);
 
@@ -140,7 +177,7 @@ class AnalyseUni extends Data
      */
     public function quartiles(int $index)
     {
-        $data  = $this->minimize($index);
+        $data  = minToOne($this->getData(), $index);
         $length  = count($data);
         $success = sort($data);
 

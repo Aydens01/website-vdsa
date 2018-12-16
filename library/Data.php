@@ -1,16 +1,21 @@
 <?php
-
 /**
- * Class DATA
+ * Data.php -- define Data class
  * 
  * @author Adrien Lafage
- * @date 27/11/18
+ * @since 27/11/18
  * @description
  * Classe modélisant des données.
  * 
  * @TODO: fonctions mathématiques
- * @FIXME: nothing to fix
+ * 
+ * @FIXME
  */
+
+# Functions required
+require('stats.php');
+
+
 class Data
 {
     /**
@@ -64,71 +69,18 @@ class Data
         return $this;
     }
 
-    /**
-     * Forme une liste des valeurs pour une unique variable dans une liste de listes
-     * 
-     * @param integer $index L'index de la variable à extraire dans la sous-liste.
-     * @return array La liste par rapport à une variable.
-     */
-    public function minimize(int $index)
+    public function unicity(int $index)
     {
-        $data = $this->getData();
         $output = array();
-
-        foreach ($data as $element) {
-            $output[] = $element[$index];
-        }
-
-        return $output;
-    }
-
-    /**
-     * Calcule la moyenne d'une liste de listes
-     * 
-     * @param integer $index L'index de la variable à traiter dans la sous-liste.
-     * @return float La moyenne du dataset.
-     */
-    public function average(int $index)
-    {
-        $data = $this->minimize($index); // on récupère le dataset
-        $output = array_sum($data)/count($data); // on calcule la moyenne
-        
-        return $output;
-    }
-
-    /**
-     * Calcule la variance d'une variable dans une liste de listes
-     * 
-     * @param integer $index L'index de la variable à traiter dans la sous-liste.
-     * @return float La variance de la variable.
-     */
-    public function variance(int $index)
-    {
-        $data = $this->minimize($index);
-        $average = $this->average($index);
-        $length = count($data);
-
-        $output = 0;
+        $data_x = minToOne($this->getData(), $index);
+        $length = count($data_x);
 
         for ($i=0; $i < $length; $i++) { 
-            $output += pow($data[$i]-$average, 2);
+            if (!in_array($data_x[$i], $output)) {
+                array_push($output, $data_x[$i]);
+            }
         }
 
-        $output = (1/$length)*$output;
-
-        return $output;
-    }
-
-    /**
-     * Calcule l'écart-type d'une variable dans une liste de listes
-     * 
-     * @param integer $index L'index de la variable à traiter dans la sous-liste.
-     * @return float L'écart-type de la variable.
-     */
-    public function deviation(int $index)
-    {
-        $output = $this->variance($index);
-        $output = pow($output, 0.5);
         return $output;
     }
 }
