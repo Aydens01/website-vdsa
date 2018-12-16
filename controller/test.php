@@ -18,6 +18,7 @@ class test extends Controller
 
     public function analyse()
     {
+        /*
         $data = array(
             array(16, 2, 4), 
             array(12, 4, 8), 
@@ -52,11 +53,33 @@ class test extends Controller
             0,
             1
         );
+        */
+
+        $ca = $this->model('analyseModel')->univar('CA', 'commandes');
+
+        if ($ca == null) {
+            $ca = array(array('FAIL'));
+        }else{
+            $uni = new AnalyseUni($ca, 0);
+        }
+
+        $fam_ca = $this->model('analyseModel')->bivar('codeFamille', 'CA', 'commandes');
+
+        if ($fam_ca == null) {
+            $fam_ca = array(array('FAIL'));
+        }else{
+            $qua = new AnaQualQuan($fam_ca, 0, 1);
+        }
 
         $this->view('test/analyse', array(
+            /*
             'uni'    => $uni,
             'biv'    => $biv,
             'qua'    => $quanqual
+            */
+            'test' => $fam_ca,
+            'uni'  => $uni,
+            'qua'  => $qua
         ));
     }    
     public function board()
