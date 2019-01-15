@@ -1,5 +1,32 @@
 $(document).ready(function(){
+    /*
+    var familles = Array()
 
+    $.each(selectValues, function(key, value) {   
+        $('#famille')
+            .append($("<option></option>")
+                       .attr("value",key)
+                       .text(value)); 
+    });
+
+   $.ajax({
+    url:'/test/modelFamille',
+    type:"POST",
+    success:
+    function(data, status){
+        console.log(data);
+        var data = $.parseJSON(JSON.stringify(data));
+        console.log(status);
+        console.log(data);
+        data = data[0];
+        
+        $.each(data, function(elem) {   
+            console.log(elem);
+        });
+        
+    }
+})
+    */
     $("#CA").prop("checked", true);
 
     $(".target").change(function(){
@@ -7,11 +34,12 @@ $(document).ready(function(){
         var data = {};
         data.freq = $("#frequence").val();
         data.margeCA = $('input[name=options]:checked').val();
+        data.client = $("#client").val();
         data.famille = $("#famille").val();
         data.sousFamille = $("#sousFamille").val();
         
         $.ajax({
-            url:'/test/modelTest',
+            url:'/test/majDataGraph',
             type:"POST",
             data: data,
             dataType:"json",
@@ -22,6 +50,7 @@ $(document).ready(function(){
                 console.log(data);
                 data = data[0];
                 var items = [];
+
                 $.each( data, function( key, val ) {
                   items.push( "<li id='" + key + "'>" + val + "</li>" );
                 });
@@ -34,9 +63,36 @@ $(document).ready(function(){
             }
         })
     });
+
+    $("#famille").change(function(){
+        var data = {};
+        data.famille = $("#famille").val();
+        
+        $.ajax({
+            url:'/test/majFamilleSousFam',
+            type:"POST",
+            data: data,
+            dataType:"json",
+            success:
+            function(data, status){
+                
+                var data = $.parseJSON(JSON.stringify(data));
+
+                $("#sousFamille").html(
+                    '<option value="0">Sous Famille (toutes par default)</option>'
+                );
+                for (var i = 0; i < data.length; i++) {
+
+                    $("#sousFamille").append(
+                        "<option value="+ data[i]["idSousFamille"] +">"+ data[i]["libelle"] +"</option>"   
+                    );
+                }
+            }
+        })
+    });
 });
- 
- /* window.onload = function () {
+    /*
+    window.onload = function () {
     var title = null TODO: récupérer le titre du graphique
     var chart = new CanvasJS.Chart("chartContainer", {
         animationEnabled: true,
@@ -126,5 +182,4 @@ $(document).ready(function(){
         chart.render();
     }
 }
-
 */

@@ -1,7 +1,9 @@
 <?php
 require_once '../init.php';
 
-$app = new App;
-//$user = new User(NULL,NULL,NULL,'guest');
 session_start();
+$app = new App;
+
+//$user = new User(NULL,NULL,NULL,'guest');
+
 //$_SESSION["user"]=$user;

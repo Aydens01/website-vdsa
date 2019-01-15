@@ -84,12 +84,30 @@ class test extends Controller
     }    
     public function board()
     {
-        $this->view('board',array());
+        $famille = $this->model('boardModel')->famille();
+        $sousFamille = $this->model('boardModel')->sousFamille();
+        $this->view('board',array(
+            'famille' => $famille,
+            'sousFamille' => $sousFamille
+        
+        ));
     }
 
-    public function modelTest()
+    public function majDataGraph()
+    {  
+		$this->model('boardModel')->dataGraph();
+        //$this->view('boardModel/verif',array());
+    }
+
+    public function majFamilleSousFam()
+    {  
+		$this->model('boardModel')->familleSousFam();
+        //$this->view('boardModel/verif',array());
+    }
+
+    public function modelFamille()
     {		
-		$this->model('boardModel')->verif();
+		$this->model('boardModel')->famille();
         //$this->view('boardModel/verif',array());
     }
 

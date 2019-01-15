@@ -53,11 +53,11 @@ class analyseModel extends DB
 
         $conn = $this->DBconnect();
         //$request = 'SELECT '.$column1.', '.$column2.' FROM '.$table;
-        $request = 'SELECT '.$column1.', '.$column2.' FROM '.$table;
+        $request = 'SELECT MONTH(date), SUM(CA) FROM commande GROUP BY id, MONTH(DATE)';
         $response = $conn->query($request);
         if ($response != null) {
             while ($row = $response->fetch()) {
-                $output[]=array($row[$column1], $row[$column2]);
+                $output[]=array($row["MONTH(date)"], $row["SUM(CA)"]);
             }
         }else{
             $output = array(array('FAIL'));
