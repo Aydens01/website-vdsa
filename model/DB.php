@@ -19,10 +19,18 @@ class DB {
 	public function test(){
 		
 		$conn = $this->DBconnect();
-		$sth = $conn->query('SELECT * FROM users');
+		/*$sth = $conn->query('SELECT * FROM users');
 		while ($row = $sth->fetch()){
 			echo $row['name'] . "</br>";
-		}
+		}*/
+		$conn = $this->DBconnect2();
+		$sth = $conn->query('SELECT id_vendeur FROM users WHERE role="trader"');
+		$trader_id_list = $sth->fetchAll(PDO::FETCH_COLUMN, 0);
+		print_r($trader_id_list);	
+		$sth = $conn->query('SELECT codeFamille FROM familles');
+		$famille_id_list = $sth->fetchAll(PDO::FETCH_COLUMN, 0);
+		echo '</br>';
+		print_r($famille_id_list);
 		$sth = null;
 		$conn = null;
 	}
@@ -35,6 +43,17 @@ class DB {
     protected function DBconnect(){
 	    try{
             $db = new PDO('mysql:host=mysql-parauemman.alwaysdata.net;dbname=parauemman_vdsa;charset=utf8', '166296_root', 'Nellatrax162');
+		}catch (PDOException $e) {
+			die();
+            //$errorMessage = $e->getMessage();
+            //require(Path::view(array('home.php')));
+        }
+        return $db;
+    }
+	
+	 protected function DBconnect2(){
+	    try{
+            $db = new PDO('mysql:host=mysql-parauemman.alwaysdata.net;dbname=parauemman_vdsa_test;charset=utf8', '166296_root', 'Nellatrax162');
 		}catch (PDOException $e) {
 			die();
             //$errorMessage = $e->getMessage();

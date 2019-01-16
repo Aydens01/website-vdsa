@@ -5,6 +5,7 @@ class loginModel extends DB
 	function verif($email,$password){
 		// $token = '' ; 
 		$conn = $this->DBconnect();
+		//$email = $conn->quote($email);
 		$request = 'SELECT * FROM users WHERE email ="'.$email.'"';
 		$sth = $conn->query($request);
 		if ($sth != false){
@@ -26,5 +27,5 @@ class loginModel extends DB
 		else{
 			return false; //email non valide
 		}
-	}
 }
+	}

@@ -2,8 +2,8 @@
 $title = "dashboard";
 ob_start();
 
-//$connexion = new DB;
-//$connexion->test();
+$connexion = new DB;
+$connexion->test();
 // CONTENU =====================================================================
 //echo $data['test'];
 ?>
