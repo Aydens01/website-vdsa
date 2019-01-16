@@ -9,7 +9,7 @@ class loginModel extends DB
 		$sth = $conn->query($request);
 		if ($sth != false){
 			$user_info = $sth->fetch();
-			$conn -> closeCursor();
+			
 			$conn = null;
 			$sth = null;
 			
