@@ -9,13 +9,14 @@ class loginModel extends DB
 		$sth = $conn->query($request);
 		if ($sth != false){
 			$user_info = $sth->fetch();
-			  
+			$conn -> closeCursor();
 			$conn = null;
 			$sth = null;
 			
 			$hash = $user_info['password'];
 			if (password_verify($password, $hash)) {
-				$user = New User($user_info['id'],$user_info['email'],$user_info['password'],$user_info['role']);
+				$user = new User($user_info['id'],$user_info['email'],$user_info['password'],$user_info['role']);
+				$_SESSION['user']=$user;
 				return true;
 			} 
 			else {

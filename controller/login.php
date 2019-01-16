@@ -34,8 +34,7 @@ class login extends Controller
 			$authentified = $identify->verif($_POST['mail'],$_POST['password']);
 			
 			if ($authentified){
-				//$this->controller('home');
-				$this->view('home');
+				$this->controller('home');
 			}
 			else{
 				$this->view('login',array('url' => '','state'=>'bad authentification'));

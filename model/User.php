@@ -40,13 +40,14 @@ class User {
      * @param string $password user password ,should be hashed
      * @param string $role user role
      */
+
 	public function __construct($id,$email,$password,$role){
 		$this -> id = $id;
 		$this -> email = $email;
 		$this -> password = $password;
 		$this -> role = $role;
 	}
-	
+
 	/**
      * Returns the id of a User object
      * 
@@ -56,6 +57,7 @@ class User {
 		return $this ->id;
 	}
 	
+
 	/**
      * Returns the email of a User object
      * 

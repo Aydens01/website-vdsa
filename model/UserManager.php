@@ -12,7 +12,6 @@
  * @FIXME
  */
 class UserManager extends DB {
-	
 	function updateUser($user){
 		$conn = $this->DBconnect();
 		$request = 'SELECT * FROM users WHERE id ="'.$user->id.'"';
