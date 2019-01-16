@@ -21,8 +21,15 @@ class boardModel extends DB
         $condition = 0;
 
         $conn = $this->DBconnect();
+        $r = 'SELECT MONTH(date), YEAR(date),';
 
-        $r = 'SELECT MONTH(date), YEAR(date), SUM(CA) FROM commandes';
+        if ($_POST["margeCA"] == 'CA') {
+            $r = $r . " SUM(CA) "; 
+        } else {
+            $r = $r . " SUM(marge) ";
+        }
+
+        $r = $r . 'FROM commandes';
 
 
         if ($_POST["client"] != "" || $_POST["famille"] != 0 || $_POST["sousFamille"] != 0){
@@ -120,27 +127,113 @@ class boardModel extends DB
         }
         
         echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
-        
-        
-        //echo json_encode($conn->query('SELECT id FROM commandes WHERE id_client = "V00178"')->fetchAll(PDO::FETCH_ASSOC));
-        /*
-        if($_POST["sousFamille"] == "NULL"){
-            $sousFamille = "";
-        } else {
-            $sousFamille = " AND codeSousFamille = " . $_POST["sousFamille"];
-        }
+       
+    }
 
-        if($_POST["client"] == "NULL"){
-            $client = "";
-        } else {
-            $client = " AND id_client = " . $_POST["client"];
-        }
-        */
+    function clientAnneeN($annee){
 
+        $conn = $this->DBconnect();
         
-        //echo json_encode($conn->query('SELECT id FROM commandes WHERE id_vendeur = 1')->fetchAll(PDO::FETCH_ASSOC));
-        //echo json_encode($_POST); SELECT id FROM commande WHERE id_vendeur = 1            WHERE "'.$test.'"')
-        //echo json_encode($conn->query('SELECT codeFamille FROM familles WHERE libelle = "'.$libelle.'" '.$test.'')->fetchAll(PDO::FETCH_ASSOC));
+        $r = 'SELECT COUNT(DISTINCT id_client) FROM commandes WHERE YEAR(date) = :annee';
+        $req = $conn->prepare($r);
+        $req->bindParam(':annee', $annee);
+        $req->execute();
+        
+        if ($req != null) {
+            while ($row = $req->fetch()) {
+                $output[]=$row;
+            }
+        }else{
+            $output = array(array('FAIL'));
+        }
+        $req = null;
+        $conn = null;
+
+        return $output;
+    }
+
+    function margeCATotal($annee){
+
+        $conn = $this->DBconnect();
+        
+        $r = 'SELECT SUM(CA), SUM(marge) FROM commandes WHERE YEAR(date) = :annee';
+        $req = $conn->prepare($r);
+        $req->bindParam(':annee', $annee);
+        $req->execute();
+        
+        if ($req != null) {
+            while ($row = $req->fetch()) {
+                $output[]=$row;
+            }
+        }else{
+            $output = array(array('FAIL'));
+        }
+        $req = null;
+        $conn = null;
+
+        return $output;
+    }
+
+    function dataGeo(){
+
+        $client = 0;
+        $famille = 0;
+        $sousFamille = 0;
+        $condition = 0;
+
+        $conn = $this->DBconnect();
+
+        $r = 'SELECT ville, codePostal, SUM(marge), SUM(CA) FROM commandes';
+
+
+        if ($_POST["client"] != "" || $_POST["famille"] != 0 || $_POST["sousFamille"] != 0){
+
+            $r = $r . ' WHERE';
+        
+            if ($_POST["client"] != "") {
+                
+                $r = $r . ' id_client = :idClient';
+                $client = 1;
+                $condition = 1;
+            }
+            if ($_POST["famille"] != 0) {
+
+                if ($condition == 1){
+
+                    $r = $r . ' AND';
+                }
+                $r = $r . ' codeFamille = :codeFamille';
+                $famille = 1;
+                $condition = 1;
+            }
+            if ($_POST["sousFamille"] != 0) {
+
+                if ($condition == 1){
+
+                    $r = $r . ' AND';
+                }
+                $r = $r . ' codeSousFamille = :codeSousFamille';
+                $sousFamille = 1;
+                $condition = 1;
+            }
+        }        
+
+        $r = $r . ' GROUP BY ville, codePostal;';
+        $req = $conn->prepare($r);
+        //$req->bindParam(':idVendeur', $_POST["vendeur"]);
+
+        if ($client == 1){
+            $req->bindParam(':idClient', $_POST["client"]);
+        }
+        if ($famille == 1){
+            $req->bindParam(':codeFamille', $_POST["famille"]);
+        }
+        if ($sousFamille == 1){
+            $req->bindParam(':codeSousFamille', $_POST["sousFamille"]);
+        }
+        
+        $req->execute();
+        echo json_encode($req->fetchAll(PDO::FETCH_ASSOC));
        
     }
 

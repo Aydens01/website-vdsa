@@ -86,10 +86,18 @@ class test extends Controller
     {
         $famille = $this->model('boardModel')->famille();
         $sousFamille = $this->model('boardModel')->sousFamille();
+        $clientN = $this->model('boardModel')->clientAnneeN("2017");
+        $clientN1 = $this->model('boardModel')->clientAnneeN("2016");
+        $margeCATotalN = $this->model('boardModel')->margeCATotal("2017");
+        $margeCATotalN1 = $this->model('boardModel')->margeCATotal("2016");
         $this->view('board',array(
             'famille' => $famille,
-            'sousFamille' => $sousFamille
-        
+            'sousFamille' => $sousFamille,
+            'clientN' => $clientN,
+            'clientN1' => $clientN1,
+            'margeCATotalN'=> $margeCATotalN,
+            'margeCATotalN1'=> $margeCATotalN1
+
         ));
     }
 
@@ -97,6 +105,63 @@ class test extends Controller
     {  
 		$this->model('boardModel')->dataGraph();
         //$this->view('boardModel/verif',array());
+    }
+
+    public function majGeo()
+    {  
+		$this->model('boardModel')->dataGeo();
+        //$this->view('boardModel/verif',array());
+    }
+
+    public function maths()
+    {  
+        $dataset1 = $this->model('analyseModel')->bivar('codeFamille', 'CA', 'commandes');
+        //$dataset2 = $this->model('analyseModel')->bivar('codeFamille', 'marge', 'commandes');
+        //$dataset3 = $this->model('analyseModel')->bivar('codeSousFamille', 'CA', 'commandes');
+        //$dataset4 = $this->model('analyseModel')->bivar('codeSousFamille', 'marge', 'commandes');
+        //$dataset5 = $this->model('analyseModel')->bivar('CA', 'marge', 'commandes');
+        //$dataset6 = $this->model('analyseModel')->univar('CA', 'commandes');
+        //$dataset7 = $this->model('analyseModel')->univar('CA', 'commandes');
+
+        $A_biv1 = new AnaQualQuan(
+            $dataset1,
+            0,
+            1
+        );
+        /*
+        $A_biv2 = new AnalyseQualQuan(
+            $dataset2,
+            0,
+            1
+        );
+
+        $A_biv5 = new AnalyseQuanQuan(
+            $dataset5,
+            0,
+            1
+        );
+
+        $A_uni1 = new AnalyseUni(
+            $dataset6,
+            0
+        );
+
+        $A_uni2 = new AnalyseUni(
+            $dataset7,
+            0
+        );
+        */
+        $this->view('board',array(
+            'correlFaCA'=> $A_biv1->getRpcorrel(),
+            //'correlFama'=> $A_biv2->getRpcorrel(),
+            //'correlSFaCA'=> $A_biv3->getRpcorrel(),
+            //'correlSFama'=> $A_biv4->getRpcorrel(),
+            //'correlCama'=> $A_biv5->getPearson(),
+            //'averageCa'=> $A_uni1->getAverage(),
+            //'medianCa'=> $A_uni1->getMedian(),
+            //'averageMa'=> $A_uni2->getAverage(),
+            //'medianMa'=> $A_uni2->getMedian()
+        ));
     }
 
     public function majFamilleSousFam()

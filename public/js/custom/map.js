@@ -31,36 +31,13 @@ function setCircle(map, center, radius, color, legend) {
         center: center,
         radius:radius
     });
-    /*
-    var contentString = 
-        '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">'+
-            legend.title+
-            '</h1>'+
-            '<div id="bodyContent">'+
-                '<p>'+
-                legend.text+
-                '</p>'+
-            '</div>'+
-        '</div>';
 
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
-    });
-    */
-
-    var info = '<h3>Titre</h3>'+
-               '<p>Un texte...</p>'
+    var info = '<div class="subtitle">'+legend.title+'</div>'+
+               '<div class="info-text">Chiffre d\'affaire total : '+legend.ca+' €</div>' +
+               '<div class="info-text">Marge totale : '+legend.marge+' €</div>'
                ;
 
-    
-
-
     google.maps.event.addListener(circle, 'click', function(){
-        //infowindow.setPosition(circle.getCenter());
-        //infowindow.open(map);
         document.getElementById("infos").innerHTML = info;
     });
 }
@@ -69,60 +46,140 @@ function setCircle(map, center, radius, color, legend) {
  * Converti une adresse en coordonnées (latitude, longitude) et met un marker dessus.
  * 
  * @param {object} map l'objet map de l'api google
- * @param {object} geocoder l'objet geocoder de l'api google
  * @param {string} address l'adresse à convertir
- * @returns {object} les coordonnées de l'adresse (latitude et longitude) 
+ * @param {integer} radius Le rayon du cercle
+ * @param {string} color la couleur
+ * @param {string} legend le texte associé à la position
  */
-function geocodeAddress(map, geocoder, address) {
-
-    var output = null;
+function geocodeAddress(map, address, radius, color, legend) {
+    var geocoder = new google.maps.Geocoder();
 
     geocoder.geocode({'address': address}, function(results, status) {
         if (status === 'OK') {
-            /*
-            map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-            */
-            output = results[0].geometry.location;
-            console.log(output);
+            console.log("ok " + address);
+            setCircle(map,results[0].geometry.location,radius,color,legend);
             
         }else {
-            alert('Geocode was not successful for the following reason: ' + status);
-            return null;
+            console.log("default " + address);
+            if (status==google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+                setTimeout(function() {
+                    console.log("pas ok " + address);
+                    geocodeAddress(map, address, radius, color, legend);
+                    
+                }, 200);
+            }else{
+                alert('Geocode was not successful for the following reason: ' + status);
+            }            
         }
     });
-
-    console.log(output);
-    return output;
 }
 
 /* Variables de test TODO: temporaire */
 var map;
-var ctr = {lat: -34.397, lng: 150.644};
+var ctr = {lat: 43.6043, lng: 1.4437};
 var rad = 5000;
 var clr = '#FF0000';
-var lgd = {title:'Title', text:'Your text here...'};
-var address = "31400 Toulouse";
+var lgd1 = {title:'Title1', nb:'Your text here...'};
+var lgd2 = {title:'Title2', nb:'Another text...'}
+var address1 = "31400 Toulouse";
+var address2 = "31000 Toulouse";
 
 /**
- * Création d'une carte 
+ * Création d'une carte
+ * 
+ * @param {Array} data L'objet json 
  */
-function initMap() {
+function initMap(data) {
+
+    console.log(data);
     // initialise l'objet Map (@param:{centre,zoom})
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
+        center: {lat: 49.0333, lng: 2.0667},
         zoom: 8
     });
     // initialise l'objet Geocoder
-    var geocoder = new google.maps.Geocoder();
+    
+    
+    for (let index = 0; index < data.length -1; index++) {
 
-    /* code */
+        if (data[index].codePostal != 0){
+            var address = data[index].codePostal + " " + data[index].ville;
+            var radius = Math.log(parseFloat(data[index]["SUM(CA)"]))*100;
+            var legend = {title:data[index].ville, ca:String(Math.round(parseFloat(data[index]["SUM(CA)"])*100)/100), marge:String(Math.round(parseFloat(data[index]["SUM(marge)"])*100)/100)};
+            console.log(address);
+            geocodeAddress(map, address, radius, clr, legend);
+        } 
+    }
 
-    //var results = geocodeAddress(map, geocoder, address);
-    //console.log(results);
-
-    setCircle(map, ctr, rad, clr, lgd);
+    
 }
+
+$(document).ready(function(){
+        /*
+        console.log("okDebut");
+        var data = {};
+        $.ajax({
+            url:'/test/maths',
+            type:"POST",
+            data: data,
+            dataType:"json",
+            success:
+            function(data, status){
+                console.log("okMaths");
+                var data = $.parseJSON(JSON.stringify(data));
+                document.getElementById('correlFaCA').innerHTML+=data['correlFaCA'];
+                console.log(data['correlFaCA']);
+                //document.getElementById('correlFama').innerHTML+=data['correlFama'];
+                //document.getElementById('correlSFaCA').innerHTML+=data['correlSFaCA'];
+                //document.getElementById('correlSFama').innerHTML+=data['correlSFama'];
+                //document.getElementById('correlCAma').innerHTML+=data['correlCama'];
+                //document.getElementById('averageCA').innerHTML+=data['averageCa'];
+                //document.getElementById('medianCA').innerHTML+=data['medianCa'];
+                //document.getElementById('averageMa').innerHTML+=data['averageMa'];
+                //document.getElementById('medianMa').innerHTML+=data['medianMa'];
+
+            }
+        })
+        */
+        $("#geo").click(function(){
+            var data = {};
+            data.freq = $("#frequence").val();
+            data.margeCA = $('input[name=options]:checked').val();
+            data.client = $("#client").val();
+            data.famille = $("#famille").val();
+            data.sousFamille = $("#sousFamille").val();
+            
+            $.ajax({
+                url:'/test/majGeo',
+                type:"POST",
+                data: data,
+                dataType:"json",
+                success:
+                function(data, status){
+                    
+                    var data = $.parseJSON(JSON.stringify(data));
+                    initMap(data);
+        
+                }
+            })
+        });
+
+        $("#mathsButton").click(function(){
+            var data = {};
+            $.ajax({
+                url:'/test/maths',
+                type:"POST",
+                data: data,
+                dataType:"json",
+                success:
+                function(data, status){
+                    
+                    var data = $.parseJSON(JSON.stringify(data));
+        
+                }
+            })
+        });
+
+});
+
+

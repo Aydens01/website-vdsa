@@ -57,6 +57,9 @@ class User {
 		return $this ->id;
 	}
 	
+	public function getFirstName(){
+		return $this ->firstname;
+	}
 
 	/**
      * Returns the email of a User object

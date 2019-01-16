@@ -19,7 +19,22 @@ class home extends Controller
     public function index($role = '')
     {
 		if ($_SESSION['user']->getRole()!="guest"){
-			$this->view('home',array('role' => $role));
+			$famille = $this->model('boardModel')->famille();
+			$sousFamille = $this->model('boardModel')->sousFamille();
+			$clientN = $this->model('boardModel')->clientAnneeN("2017");
+			$clientN1 = $this->model('boardModel')->clientAnneeN("2016");
+			$margeCATotalN = $this->model('boardModel')->margeCATotal("2017");
+			$margeCATotalN1 = $this->model('boardModel')->margeCATotal("2016");
+			$this->view('board',array(
+				'famille' => $famille,
+				'sousFamille' => $sousFamille,
+				'clientN' => $clientN,
+				'clientN1' => $clientN1,
+				'margeCATotalN'=> $margeCATotalN,
+				'margeCATotalN1'=> $margeCATotalN1,
+				'role' => $role
+
+			));
 		}else{
 			header('Location: /');
 		}
