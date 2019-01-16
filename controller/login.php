@@ -18,7 +18,11 @@ class login extends Controller
      */
     public function index()
     {
-        $this->view('login',array('url' => 'login/verify'));
+		if ($_SESSION['user']->getRole()!="guest"){
+			header('Location: /home'); 
+		}else{
+			$this->view('login',array('url' => 'login/verify'));
+		}
     }
 	
 	/**
@@ -34,7 +38,7 @@ class login extends Controller
 			$authentified = $identify->verif($_POST['mail'],$_POST['password']);
 			
 			if ($authentified){
-				$this->controller('home');
+				header('Location: /home'); 
 			}
 			else{
 				$this->view('login',array('url' => '','state'=>'bad authentification'));

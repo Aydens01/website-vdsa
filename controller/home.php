@@ -18,6 +18,10 @@ class home extends Controller
      */
     public function index($role = '')
     {
-        $this->view('home',array('role' => $role));
+		if ($_SESSION['user']->getRole()!="guest"){
+			$this->view('home',array('role' => $role));
+		}else{
+			header('Location: /');
+		}
     }
 }
