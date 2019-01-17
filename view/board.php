@@ -32,9 +32,8 @@ include(Path::view(array('includes', 'plugin.php')));
             <div id="nom">
               <div> <a href="/admin">Back Office</a> <p>
               <?php
-                    //echo "test";
-                    //$user = $_SESSION["user"];
-                    //echo $user->getRole();
+                    $user = $_SESSION["user"];
+                    echo $user->getMail();
                 ?>
               </p><a href="?logout">Déconnexion</a></div>
             </div>

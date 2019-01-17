@@ -146,8 +146,10 @@ class adminModel extends DB
 	}
 	function delete($mail){
 		$conn = $this->DBconnect2();
-		$sql="DELETE FROM users WHERE email=".$mail;
-		$conn -> exec($sql);
+		//$sql="UPDATE users SET role='guest' WHERE email=".$mail.";";
+		$sql = "UPDATE users SET role='guest' WHERE email=?";
+		$sth = $conn -> prepare($sql);
+		$sth -> execute([$mail]);
 		$sth = null;
 		$conn = null;
 	}
