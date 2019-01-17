@@ -18,7 +18,13 @@ class admin extends Controller
      */
     public function index()
     {
-		$this->view('admin',array('url' => 'admin/import'));
+		if ($_SESSION['user']->getRole()=="admin"){
+			$operations = $this->model('adminModel');
+			$info = $operations -> get_info() ;
+			$this->view('admin',array('url' => 'admin/import','user_info' =>$info,'url_rmv'=>'admin/remove'));
+		}else{
+			header('Location: /login');
+		}
     }
 	
 	/**
@@ -27,18 +33,39 @@ class admin extends Controller
      */
 	public function import()
 	{
-		$operations = $this->model('adminModel');
-		if (isset($_FILES['csv']) && $csv['error']==0){
-			$verified = $operations->verify($_FILES['csv']);
-			if ($verified){
-				$operations->send($_FILES['csv']);
-				$this->view('admin',array('url'=>'','state'=>'sent'));
-				
+		if ($_SESSION['user']->getRole()=="admin"){
+			$operations = $this->model('adminModel');
+			$info = $operations -> get_info() ;
+			if (isset($_FILES['csv']) && $csv['error']==0){
+				$verified = $operations->verify($_FILES['csv']);
+				if ($verified){
+					$operations->send($_FILES['csv']);
+					$this->view('admin',array('url'=>'','state'=>'sent','url_rmv'=>'/remove','user_info' =>$info));
+				}else{
+					$this->view('admin',array('url'=>'','state'=>'invalid format, missing field or wrong separator','url_rmv'=>'/remove','user_info' =>$info));
+				}
 			}else{
-				$this->view('admin',array('url'=>'','state'=>'invalid format, missing field or wrong separator'));
+				$this->view('admin',array('url'=>'','state'=>'csv file not set','url_rmv'=>'/remove','user_info' =>$info));
 			}
 		}else{
-			$this->view('admin',array('url'=>'','state'=>'csv no set'));
-		} 
+			header('Location: /login');
+		}	 
+	}
+	
+	public function remove()
+	{
+		if ($_SESSION['user']->getRole()=="admin"){
+			$operations = $this->model('adminModel');
+			$info = $operations -> get_info() ;
+			if (isset($_POST["login_supp"])&&strlen($_POST['login_supp'])){
+				$operations -> delete($_POST["login_supp"]);
+				
+				$this->view('admin',array('url'=>'/import','state'=>'\"deleted\"','url_rmv'=>'','user_info' =>$info));
+			}else{
+				$this->view('admin',array('url'=>'/import','state'=>'login_supp not set','url_rmv'=>'','user_info' =>$info));
+			}
+		}else{
+			header('Location: /login');
+		}
 	}
 }

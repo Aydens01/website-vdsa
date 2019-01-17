@@ -2,7 +2,8 @@
 require_once '../init.php';
 
 session_start();
-if (isset($_SESSION['TIME']) && (time() - $_SESSION['TIME'] > 30)) {
+
+if (isset($_SESSION['TIME']) && (time() - $_SESSION['TIME'] > 300)) {
     session_destroy();
     session_unset();
 }

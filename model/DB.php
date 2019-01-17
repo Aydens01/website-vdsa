@@ -22,7 +22,7 @@ class DB {
 		/*$sth = $conn->query('SELECT * FROM users');
 		while ($row = $sth->fetch()){
 			echo $row['name'] . "</br>";
-		}*/
+		}
 		$conn = $this->DBconnect2();
 		$sth = $conn->query('SELECT id_vendeur FROM users WHERE role="trader"');
 		$trader_id_list = $sth->fetchAll(PDO::FETCH_COLUMN, 0);
@@ -30,7 +30,10 @@ class DB {
 		$sth = $conn->query('SELECT codeFamille FROM familles');
 		$famille_id_list = $sth->fetchAll(PDO::FETCH_COLUMN, 0);
 		echo '</br>';
-		print_r($famille_id_list);
+		print_r($famille_id_list);*/
+		$sth = $conn->query('SELECT * FROM users');
+		$info = $sth->fetchAll();
+		print_r($info);
 		$sth = null;
 		$conn = null;
 	}

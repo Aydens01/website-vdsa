@@ -135,4 +135,20 @@ class adminModel extends DB
 			return false;
 		}
 	}
+	function get_info(){
+		$conn = $this->DBconnect2();
+		$sth = $conn->query('SELECT * FROM users ORDER BY id');
+		$info = $sth->fetchAll();
+		$sth = null;
+		$conn = null;
+		return ($info);
+		
+	}
+	function delete($mail){
+		$conn = $this->DBconnect2();
+		$sql="DELETE FROM users WHERE email=".$mail;
+		$conn -> exec($sql);
+		$sth = null;
+		$conn = null;
+	}
 }

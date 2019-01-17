@@ -1,49 +1,9 @@
-<!--
- <?php
-include(Path::view(array('includes','head.php')));
-include(Path::view(array('includes','plugin.php')));
-?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Identification</title>
-        <?= $head ?>
-        
-    </head>
-
-    <body data-spy="scroll" data-target=".navbar" data-offset="50">
-	
-        <div id="top"></div>
-        <form action="<?= $data['url'] ?>" method="post">
-			<div class="container">
-				<div class="form-group">
-					<label for="uname"><b>Mail</b></label>
-					<input class="form-control" type="text" placeholder="Enter Username" name="mail" required>
-				</div>
-				
-				<div class="form-group">
-					<label for="psw"><b>Password</b></label>
-					<input class="form-control" type="password" placeholder="Enter Password" name="password" required>
-				</div>
-				<button class="btn btn-primary" type="submit">Login</button>
-				<label>
-				<input type="checkbox" checked="checked" name="remember"> Remember me
-				</label>
-			</div>
-
-			<div class="container" style="background-color:#f1f1f1">
-				<button type="button" class="cancelbtn">Cancel</button>
-				<span class="psw">Forgot <a href="#">password?</a></span>
-			</div>
-		</form> 
-    </body>
-</html>
-
-  
--->
 <?php
 include(Path::view(array('includes','head.php')));
 include(Path::view(array('includes','plugin.php')));
+echo $data['state'];
+//$connexion = new DB;
+//$connexion->test();
 ?>
 
 
@@ -65,9 +25,9 @@ include(Path::view(array('includes','plugin.php')));
             <section class="login-form">
               <form method="post" action="<?= $data['url'] ?>" role="login">
                       <label for="uname"  class="text-uppercase"><b>Mail</b></label>
-                         <input type="email" id="login" name="email" required class="form-control input-lg" placeholder="james@exemple.net" />
+                         <input type="email" id="login" name="mail" required class="form-control input-lg" placeholder="james@exemple.net" />
                   <label for="psw" class="text-uppercase"><b>Mot de passe</b></label>
-                        <input type="password" class="form-control input-lg" id="mdp" placeholder="Mot de passe" required="" />
+                        <input type="password" class="form-control input-lg" id="mdp" name="password" placeholder="Mot de passe" required="" />
                       <div class="custom-control custom-checkbox">
                       <input type="checkbox" checked="checked" name="remember" class="custom-control-input" id="defaultChecked2">
                             <label class="custom-control-label" for="defaultChecked2"><small> Se souvenir de moi</small></label>

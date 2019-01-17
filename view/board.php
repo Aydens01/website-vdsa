@@ -1,6 +1,8 @@
 <?php
 include(Path::view(array('includes', 'head.php')));
 include(Path::view(array('includes', 'plugin.php')));
+//$connexion = new DB;
+//$connexion->test();
 ?>
 
 <!DOCTYPE html>
@@ -28,13 +30,13 @@ include(Path::view(array('includes', 'plugin.php')));
             <div><p id="statistique">Statistiques</p> </div>
             </div>
             <div id="nom">
-              <div> <a href="backOffice.php">Back Office</a> <p>
+              <div> <a href="/admin">Back Office</a> <p>
               <?php
-                    echo "test";
-                    $user = $_SESSION["user"];
-                    echo $user->getFirstName();
+                    //echo "test";
+                    //$user = $_SESSION["user"];
+                    //echo $user->getRole();
                 ?>
-              </p><a href="#">Déconnexion</a></div>
+              </p><a href="?logout">Déconnexion</a></div>
             </div>
         </div>
         <!-- sidebar -->
@@ -257,7 +259,11 @@ include(Path::view(array('includes', 'plugin.php')));
             </div>
         </footer>
         <!-- #footer -->
-
+		 <?php
+			if(isset($_GET['logout'])) {
+				session_unset();
+			}
+		?>
         <script src="<?= htmlspecialchars(Path::asset(array('js','custom/chart.js')))?>"></script>
     </body>
 </html>

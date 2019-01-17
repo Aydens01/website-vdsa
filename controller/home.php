@@ -36,7 +36,7 @@ class home extends Controller
 
 			));
 		}else{
-			header('Location: /');
+			header('Location: /login');
 		}
     }
 }

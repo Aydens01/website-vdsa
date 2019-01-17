@@ -41,7 +41,7 @@ class login extends Controller
 				header('Location: /home'); 
 			}
 			else{
-				$this->view('login',array('url' => '','state'=>'bad authentification'));
+				$this->view('login',array('url' => '','state'=>'wrong credentials'));
 			}
 		}
 		else{
